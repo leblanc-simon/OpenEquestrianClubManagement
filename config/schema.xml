@@ -1,0 +1,134 @@
+<database name="OpenEquestrianClubManagement" defaultIdMethod="native"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd"
+          package="lib.OpenEquestrianClubManagement.Model"
+          namespace="OpenEquestrianClubManagement\Model"
+          heavyIndexing="true"
+>   
+    <table name="customer" description="Table de gestion des clients">
+        <column name="firstname" type="VARCHAR" size="255" description="Prénom du client"/>
+        <column name="lastname" type="VARCHAR" size="255" description="Nom du client"/>
+        <column name="show_name" required="true" type="VARCHAR" size="255" description="Nom et prénom du client (pour affichage et slug)"/>
+        <column name="email" type="VARCHAR" size="255" description="Adresse email du client"/>
+        <column name="parent_name" type="VARCHAR" size="255" description="Nom des parents du client"/>
+        <column name="address" type="VARCHAR" size="255" description="Adresse du client"/>
+        <column name="postal_code" type="VARCHAR" size="5" description="Code postal du client"/>
+        <column name="city" type="VARCHAR" size="255" description="Ville du client"/>
+        <column name="license_number" type="VARCHAR" size="255" description="Numéro de licence du client"/>
+        <column name="birthday" type="DATE" description="Date de naissance du client"/>
+        <column name="subscribe_date" type="DATE" description="Date d'inscription du client"/>
+        <column name="description" type="LONGVARCHAR" description="Description du client"/>
+        <column name="active" type="BOOLEAN" description="Indique si le client est actif ou non"/>
+        <column name="username" type="VARCHAR" size="255" description="Identifiant de connexion du client"/>
+        <column name="passwd" type="VARCHAR" size="255" description="Mot de passe du client"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        <behavior name="sluggable">
+            <parameter name="slug_column" value="show_name" />
+            <parameter name="permanent" value="false" />
+        </behavior>
+        
+        <unique name="index_customer_show_name">
+            <unique-column name="show_name"/>
+        </unique>
+    </table>
+    
+    <table name="horse" description="Table de gestion des chevaux">
+        <column name="name" required="true" type="VARCHAR" size="255" description="Nom du cheval" primaryString="true"/>
+        <column name="sire_number" type="VARCHAR" size="255" description="Numéro de SIRE du cheval"/>
+        <column name="birthday" type="DATE" description="Date de naissance du cheval"/>
+        <column name="description" type="LONGVARCHAR" description="Description du cheval"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        <behavior name="sluggable">
+            <parameter name="permanent" value="false" />
+        </behavior>
+        
+        <unique name="index_horse_name">
+            <unique-column name="name"/>
+        </unique>
+    </table>
+    
+    <table name="card" description="Table de gestion des cartes de scéances">
+        <column name="name" required="true" type="VARCHAR" size="255" description="Nom de la carte" primaryString="true"/>
+        <column name="description" type="LONGVARCHAR" description="Description de la carte"/>
+        <column name="nb_items" type="INTEGER" description="Nombre de scéances disponibles sur la carte"/>
+        <column name="nb_week" type="INTEGER" description="Nombre de semaine que la carte est valide"/>
+        <column name="price" type="DOUBLE" description="Prix de vente de la carte (TTC)"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        <behavior name="sluggable">
+            <parameter name="permanent" value="false" />
+        </behavior>
+        
+        <unique name="index_card_name">
+            <unique-column name="name"/>
+        </unique>
+    </table>
+    
+    <table name="treatment" description="Table de gestion des types de traitements">
+        <column name="name" required="true" type="VARCHAR" size="255" description="Nom du traitement" primaryString="true"/>
+        <column name="periodicity" type="INTEGER" description="Périodicité du traitement (en semaine)"/>
+        <column name="description" type="LONGVARCHAR" description="Description du traitement"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        <behavior name="sluggable">
+            <parameter name="permanent" value="false" />
+        </behavior>
+        
+        <unique name="index_treatment_name">
+            <unique-column name="name"/>
+        </unique>
+    </table>
+    
+    <table name="treatment_apply" description="Table de gestion des applications des traitements">
+        <column name="horse_id" type="INTEGER" required="true" description="Cheval auquel le traitement a été appliqué"/>
+        <column name="treatment_id" type="INTEGER" required="true" description="Traitement appliqué au cheval"/>
+        <column name="apply_date" type="DATE" description="Date du traitement"/>
+        <column name="description" type="LONGVARCHAR" description="Description de l'application du traitement"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        
+        <foreign-key foreignTable="horse" name="Rel_horse_treatment_apply" onDelete="cascade">
+            <reference local="horse_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="treatment" name="Rel_treatment_treatment_apply" onDelete="cascade">
+            <reference local="treatment_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="order" description="Table de gestion des commandes">
+        <column name="customer_id" type="INTEGER" required="true" description="Client passant la commande"/>
+        <column name="total" type="DOUBLE" required="true" description="Montant total de la commande (TTC)"/>
+        <column name="date" type="DATE" required="true" description="Date de la commande"/>
+        <column name="payment_method" type="ENUM" valueSet="credit_card,check,money" required="true" description="Type de moyen de paiement"/>
+        <column name="state" type="ENUM" valueSet="paid,cancel,progress" required="true" description="Etat du paiement de la commande"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        
+        <foreign-key foreignTable="customer" name="Rel_customer_order" onDelete="cascade">
+            <reference local="customer_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="order_detail" description="Table de gestion des détails de commandes">
+        <column name="order_id" type="INTEGER" required="true" description="Commande pour laquelle ce détail est valable"/>
+        <column name="name" type="VARCHAR" required="true" size="255" description="Nom de l'item acheté"/>
+        <column name="amount" type="DOUBLE" required="true" description="Montant unitaire (TTC) de l'item"/>
+        <column name="vat" type="DOUBLE" required="true" description="Taux de TVA au moment de la commande"/>
+        <column name="quantity" type="DOUBLE" required="true" description="Quantité de l'item acheté"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        
+        <foreign-key foreignTable="order" name="Rel_order_order_detail" onDelete="cascade">
+            <reference local="order_id" foreign="id"/>
+        </foreign-key>
+    </table>
+</database>

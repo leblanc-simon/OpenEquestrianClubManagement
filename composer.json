@@ -1,0 +1,36 @@
+{
+    "name": "leblanc-simon/openhorsemanagement",
+    "description": "Manage horse club",
+    "version": "1.0.0-dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Leblanc",
+            "email": "contact@leblanc-simon.eu",
+            "homepage": "http://www.leblanc-simon.fr",
+            "role": "Developer"
+        }
+    ],
+    
+    "require": {
+        "silex/silex": "1.0.*",
+        
+        "twig/twig": ">=1.9,<2.0-dev",
+        
+        "symfony/form": "2.1.*",
+        "symfony/validator": "2.1.*",
+        "symfony/config": "2.1.*",
+        "symfony/translation": "2.1.*",
+        "symfony/yaml": "2.1.*",
+        "symfony/locale": "2.1.*",
+        "symfony/twig-bridge": "2.1.*",
+        "symfony/finder": "2.1.*",
+        "symfony/console": "2.1.*",
+        
+        "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev",
+        
+        "propel/propel1": "1.6.*"
+    },
+    
+    "minimum-stability": "dev"
+}

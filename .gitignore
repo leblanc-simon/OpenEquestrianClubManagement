@@ -1,0 +1,12 @@
+.komodotools
+cache/*
+config/classmap-OpenEquestrianClubManagement-conf.php
+config/config.php
+config/OpenEquestrianClubManagement-conf.php
+config/runtime-conf.xml
+data/sql
+lib/OpenEquestrianClubManagement/Model/map
+lib/OpenEquestrianClubManagement/Model/om
+vendor/*
+composer.lock
+horse.komodoproject
