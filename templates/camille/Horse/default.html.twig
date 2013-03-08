@@ -3,12 +3,17 @@
 {% block title %}OpenEquestrianClubManagement - Chevaux{% endblock %}
 
 {% block content %}
+    <h1>Liste des chevaux</h1>
+    
     <div class="search">
         
     </div>
     
     <div class="add">
-        <a href="" class="btn btn-primary">Ajouter un cheval</a>
+        <a href="{{ url('add-horse') }}" class="btn btn-primary">
+            <i class="icon-plus icon-white"></i>
+            Ajouter un cheval
+        </a>
     </div>
     
     <table class="table table-striped table-bordered">
@@ -22,7 +27,12 @@
             {% for horse in horses %}
             <tr>
                 <td>{{ horse.name }}</td>
-                <td></td>
+                <td>
+                    <a href="{{ url('edit-horse', { 'slug': horse.slug }) }}" class="btn btn-warning">
+                        <i class="icon-pencil icon-white"></i>
+                        Modifier
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

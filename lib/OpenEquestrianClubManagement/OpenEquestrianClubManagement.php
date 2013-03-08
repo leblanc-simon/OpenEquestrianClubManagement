@@ -206,6 +206,7 @@ class OpenEquestrianClubManagement
     {
         self::registerUrlGenerator();
         self::registerSession();
+        self::registerTranslation();
         self::registerTwig();
         self::registerForms();
         self::registerSwift();
@@ -233,6 +234,20 @@ class OpenEquestrianClubManagement
     static private function registerSession()
     {
         self::getApp()->register(new \Silex\Provider\SessionServiceProvider());
+    }
+    
+    
+    /**
+     * Register Translation provider
+     *
+     * @access  private
+     * @static
+     */
+    static private function registerTranslation()
+    {
+        self::getApp()->register(new \Silex\Provider\TranslationServiceProvider(), array(
+            'locale_fallback' => 'fr',
+        ));
     }
     
     

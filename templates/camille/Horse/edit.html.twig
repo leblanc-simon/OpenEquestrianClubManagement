@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Ajouter un cheval{% endblock %}
+
+{% block content %}
+    <h1>Modification du cheval &quot;{{ horse.name }}&quot;</h1>
+    <form action="{{ url('edit-horse-submit', { 'slug': horse.slug }) }}" method="post">
+        {% include "Horse/_form.html.twig" %}
+    </form>
+{% endblock %}

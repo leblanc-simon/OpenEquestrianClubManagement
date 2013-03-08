@@ -19,6 +19,16 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'horses',
         ),
+        '/nouveau-cheval' => array(
+            'class'     => 'Horse',
+            'method'    => 'addAction',
+            'route'     => 'add-horse',
+        ),
+        '/modifier-cheval/{slug}' => array(
+            'class'     => 'Horse',
+            'method'    => 'editAction',
+            'route'     => 'edit-horse',
+        ),
         
         '/types-de-soins' => array(
             'class'     => 'Treatment',
@@ -28,5 +38,15 @@ $routing = array(
     ),
     
     'POST' => array(
+        '/nouveau-cheval' => array(
+            'class'     => 'Horse',
+            'method'    => 'addAction',
+            'route'     => 'add-horse-submit',
+        ),
+        '/modifier-cheval/{slug}' => array(
+            'class'     => 'Horse',
+            'method'    => 'editAction',
+            'route'     => 'edit-horse-submit',
+        ),
     ),
 );
