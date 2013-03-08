@@ -24,7 +24,7 @@ use OpenEquestrianClubManagement\Model\CustomerQuery;
 class Customer extends App
 {
     /**
-     * Homepage action
+     * Customer listing action
      *
      * @return  Response
      * @access  public
