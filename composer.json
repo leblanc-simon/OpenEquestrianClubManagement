@@ -12,6 +12,14 @@
         }
     ],
     
+    "type": "application",
+    
+    "autoload": {
+        "psr-0": {
+            "OpenEquestrianClubManagement": "lib/"
+        }
+    },
+    
     "require": {
         "silex/silex": "1.0.*",
         

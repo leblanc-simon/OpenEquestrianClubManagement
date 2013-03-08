@@ -1,0 +1,36 @@
+body {
+    padding: 40px 0;
+}
+
+footer {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.clear {
+    clear: both;
+}
+
+.block-detail {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    padding: 39px 19px 14px;
+    position: relative;
+    text-align: left;
+    margin-top: 2em;
+}
+
+.block-detail:after {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}

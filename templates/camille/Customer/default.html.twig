@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Clients{% endblock %}
+
+{% block content %}
+    <div class="search">
+        
+    </div>
+    
+    <div class="add">
+        <a href="" class="btn btn-primary">Ajouter un client</a>
+    </div>
+    
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.lastname }}</td>
+                <td>{{ customer.firstname }}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
