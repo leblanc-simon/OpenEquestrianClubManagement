@@ -19,6 +19,12 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'horses',
         ),
+        
+        '/types-de-soins' => array(
+            'class'     => 'Treatment',
+            'method'    => 'defaultAction',
+            'route'     => 'treatments',
+        ),
     ),
     
     'POST' => array(
