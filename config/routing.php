@@ -13,6 +13,12 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'customers',
         ),
+        
+        '/chevaux' => array(
+            'class'     => 'Horse',
+            'method'    => 'defaultAction',
+            'route'     => 'horses',
+        ),
     ),
     
     'POST' => array(
