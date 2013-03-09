@@ -8,5 +8,6 @@ data/sql
 lib/OpenEquestrianClubManagement/Model/map
 lib/OpenEquestrianClubManagement/Model/om
 vendor/*
+buildtime-conf.xml
 composer.lock
 horse.komodoproject

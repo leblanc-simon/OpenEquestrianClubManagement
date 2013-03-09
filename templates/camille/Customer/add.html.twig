@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Ajouter un client{% endblock %}
+
+{% block content %}
+    <h1>Nouveau client</h1>
+    <form action="{{ url('add-customer-submit') }}" method="post">
+        {% include "Customer/_form.html.twig" %}
+    </form>
+{% endblock %}

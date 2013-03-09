@@ -15,6 +15,16 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'customers',
         ),
+        '/ajouter-un-client' => array(
+            'class'     => 'Customer',
+            'method'    => 'addAction',
+            'route'     => 'add-customer',
+        ),
+        '/modifier-un-client/{slug}' => array(
+            'class'     => 'Customer',
+            'method'    => 'editAction',
+            'route'     => 'edit-customer',
+        ),
         
         // Gestion des chevaux
         '/chevaux' => array(
@@ -42,6 +52,18 @@ $routing = array(
     ),
     
     'POST' => array(
+        // Gestion des clients
+        '/ajouter-un-client' => array(
+            'class'     => 'Customer',
+            'method'    => 'addAction',
+            'route'     => 'add-customer-submit',
+        ),
+        '/modifier-un-client' => array(
+            'class'     => 'Customer',
+            'method'    => 'editAction',
+            'route'     => 'edit-customer-submit',
+        ),
+        
         // Gestion des chevaux
         '/ajouter-un-cheval' => array(
             'class'     => 'Horse',

@@ -3,28 +3,40 @@
 {% block title %}OpenEquestrianClubManagement - Clients{% endblock %}
 
 {% block content %}
+    <h1>Liste des clients</h1>
+    
     <div class="search">
         
     </div>
     
     <div class="add">
-        <a href="" class="btn btn-primary">Ajouter un client</a>
+        <a href="{{ url('add-customer') }}" class="btn btn-primary">
+            <i class="icon-plus icon-white"></i>
+            Ajouter un client
+        </a>
     </div>
     
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Nom</th>
                 <th>Prénom</th>
+                <th>Nom</th>
+                <th>N° de Téléphone</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             {% for customer in customers %}
             <tr>
-                <td>{{ customer.lastname }}</td>
                 <td>{{ customer.firstname }}</td>
-                <td></td>
+                <td>{{ customer.lastname }}</td>
+                <td>{{ customer.phone0 }}</td>
+                <td>
+                    <a href="{{ url('edit-customer', { 'slug': customer.slug }) }}" class="btn btn-warning">
+                        <i class="icon-pencil icon-white"></i>
+                        Modifier
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

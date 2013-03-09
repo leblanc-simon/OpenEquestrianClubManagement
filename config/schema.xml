@@ -8,8 +8,9 @@
     <table name="customer" description="Table de gestion des clients">
         <column name="firstname" type="VARCHAR" size="255" description="Prénom du client"/>
         <column name="lastname" type="VARCHAR" size="255" description="Nom du client"/>
-        <column name="show_name" required="true" type="VARCHAR" size="255" description="Nom et prénom du client (pour affichage et slug)"/>
+        <column name="show_name" required="true" type="VARCHAR" size="255" description="Nom et prénom du client (pour affichage et slug)" primaryString="true"/>
         <column name="email" type="VARCHAR" size="255" description="Adresse email du client"/>
+        <column name="phones" type="OBJECT" description="Numéros de téléphone du client (multiples dans un stdClass)"/>
         <column name="parent_name" type="VARCHAR" size="255" description="Nom des parents du client"/>
         <column name="address" type="VARCHAR" size="255" description="Adresse du client"/>
         <column name="postal_code" type="VARCHAR" size="5" description="Code postal du client"/>
@@ -25,13 +26,8 @@
         <behavior name="auto_add_pk" />
         <behavior name="timestampable" />
         <behavior name="sluggable">
-            <parameter name="slug_column" value="show_name" />
             <parameter name="permanent" value="false" />
         </behavior>
-        
-        <unique name="index_customer_show_name">
-            <unique-column name="show_name"/>
-        </unique>
     </table>
     
     <table name="horse" description="Table de gestion des chevaux">

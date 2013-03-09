@@ -1,0 +1,116 @@
+
+        <div class="block-detail block-identity">
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.lastname) }}
+                    {{ form_label(form.lastname) }}
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.firstname) }}
+                    {{ form_label(form.firstname) }}
+                    {{ form_widget(form.firstname) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.parent_name) }}
+                    {{ form_label(form.parent_name) }}
+                    {{ form_widget(form.parent_name) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.birthday) }}
+                    {{ form_label(form.birthday) }}
+                    {{ form_widget(form.birthday) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.license_number) }}
+                    {{ form_label(form.license_number) }}
+                    {{ form_widget(form.license_number) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.active) }}
+                    {{ form_label(form.active) }}
+                    {{ form_widget(form.active) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.subscribe_date) }}
+                    {{ form_label(form.subscribe_date) }}
+                    {{ form_widget(form.subscribe_date) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="block-detail block-contact">
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.email) }}
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.phone0) }}
+                    {{ form_label(form.phone0) }}
+                    {{ form_widget(form.phone0) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.phone1) }}
+                    {{ form_label(form.phone1) }}
+                    {{ form_widget(form.phone1) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.phone2) }}
+                    {{ form_label(form.phone2) }}
+                    {{ form_widget(form.phone2) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12 control-group">
+                    {{ form_errors(form.address) }}
+                    {{ form_label(form.address) }}
+                    {{ form_widget(form.address) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.postal_code) }}
+                    {{ form_label(form.postal_code) }}
+                    {{ form_widget(form.postal_code) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.city) }}
+                    {{ form_label(form.city) }}
+                    {{ form_widget(form.city) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="block-detail block-description">
+            <div class="row">
+                <div class="span12 control-group">
+                    {{ form_errors(form.description) }}
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description) }}
+                </div>
+            </div>
+        </div>
+        
+        {{ form_rest(form) }}
+        
+        <div class="submit-form">
+            <button type="submit" class="btn btn-success">
+                <i class="icon-ok icon-white"></i>
+                Enregistrer
+            </button>
+            <a href="{{ url('customers') }}" class="btn btn-warning">
+                <i class="icon-th-list icon-white"></i>
+                Retour à la liste
+            </a>
+        </div>
+        

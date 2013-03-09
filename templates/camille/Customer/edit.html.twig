@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Modifier un client{% endblock %}
+
+{% block content %}
+    <h1>Modification du client &quot;{{ customer.showName }}&quot;</h1>
+    <form action="{{ url('edit-customer-submit', { 'slug': customer.slug }) }}" method="post">
+        {% include "Customer/_form.html.twig" %}
+    </form>
+{% endblock %}
