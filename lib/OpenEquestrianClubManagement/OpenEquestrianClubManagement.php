@@ -269,6 +269,7 @@ class OpenEquestrianClubManagement
         $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
                 $twig->addExtension(new Extension\Twig\Asset());
                 $twig->addExtension(new Extension\Twig\Config());
+                $twig->addExtension(new Extension\Twig\Format());
                 return $twig;
         }));
     }

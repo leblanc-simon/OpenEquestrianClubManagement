@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Cartes de séances{% endblock %}
+
+{% block content %}
+    <h1>Liste des cartes de séances</h1>
+    
+    <div class="search">
+        
+    </div>
+    
+    <div class="add">
+        <a href="{{ url('add-card') }}" class="btn btn-primary">
+            <i class="icon-plus icon-white"></i>
+            Ajouter un type de carte de séances
+        </a>
+    </div>
+    
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Nombre de séances</th>
+                <th>Validité (en semaine)</th>
+                <th>Prix</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for card in cards %}
+            <tr>
+                <td>{{ card.name }}</td>
+                <td>{{ card.nbItems }}</td>
+                <td>{{ card.nbWeek }}</td>
+                <td>{{ card.price|price }}</td>
+                <td>
+                    <a href="{{ url('edit-card', { 'slug': card.slug }) }}" class="btn btn-warning">
+                        <i class="icon-pencil icon-white"></i>
+                        Modifier
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

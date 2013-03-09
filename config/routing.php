@@ -59,6 +59,23 @@ $routing = array(
             'method'    => 'editAction',
             'route'     => 'edit-treatment',
         ),
+        
+        // Gestion des types de cartes de séances
+        '/types-de-cartes' => array(
+            'class'     => 'Card',
+            'method'    => 'defaultAction',
+            'route'     => 'cards',
+        ),
+        '/ajouter-un-type-de-carte' => array(
+            'class'     => 'Card',
+            'method'    => 'addAction',
+            'route'     => 'add-card',
+        ),
+        '/modifier-un-type-de-carte/{slug}' => array(
+            'class'     => 'Card',
+            'method'    => 'editAction',
+            'route'     => 'edit-card',
+        ),
     ),
     
     'POST' => array(
@@ -96,6 +113,18 @@ $routing = array(
             'class'     => 'Treatment',
             'method'    => 'editAction',
             'route'     => 'edit-treatment-submit',
+        ),
+        
+        // Gestion des types de cartes de séances
+        '/ajouter-un-type-de-carte' => array(
+            'class'     => 'Card',
+            'method'    => 'addAction',
+            'route'     => 'add-card-submit',
+        ),
+        '/modifier-un-type-de-carte/{slug}' => array(
+            'class'     => 'Card',
+            'method'    => 'editAction',
+            'route'     => 'edit-card-submit',
         ),
     ),
 );

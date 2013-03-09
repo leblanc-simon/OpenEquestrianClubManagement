@@ -1,0 +1,52 @@
+
+        <div class="block-detail block-card">
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.name) }}
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="span5 control-group input-append">
+                    {{ form_errors(form.price) }}
+                    {{ form_label(form.price) }}
+                    {{ form_widget(form.price) }}
+                    <span class="add-on">€ TTC</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.nb_items) }}
+                    {{ form_label(form.nb_items) }}
+                    {{ form_widget(form.nb_items) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.nb_week) }}
+                    {{ form_label(form.nb_week) }}
+                    {{ form_widget(form.nb_week) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="block-detail block-description">
+            <div class="row">
+                <div class="span12 control-group">
+                    {{ form_errors(form.description) }}
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description) }}
+                </div>
+            </div>
+        </div>
+        
+        {{ form_rest(form) }}
+        
+        <div class="submit-form">
+            <button type="submit" class="btn btn-success">
+                <i class="icon-ok icon-white"></i>
+                Enregistrer
+            </button>
+            <a href="{{ url('cards') }}" class="btn btn-warning">
+                <i class="icon-th-list icon-white"></i>
+                Retour à la liste
+            </a>
+        </div>
+        
