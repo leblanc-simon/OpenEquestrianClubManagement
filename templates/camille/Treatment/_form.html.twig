@@ -1,0 +1,39 @@
+
+        <div class="block-detail block-horse">
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.name) }}
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.periodicity) }}
+                    {{ form_label(form.periodicity) }}
+                    {{ form_widget(form.periodicity) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="block-detail block-description">
+            <div class="row">
+                <div class="span12 control-group">
+                    {{ form_errors(form.description) }}
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description) }}
+                </div>
+            </div>
+        </div>
+        
+        {{ form_rest(form) }}
+        
+        <div class="submit-form">
+            <button type="submit" class="btn btn-success">
+                <i class="icon-ok icon-white"></i>
+                Enregistrer
+            </button>
+            <a href="{{ url('horses') }}" class="btn btn-warning">
+                <i class="icon-th-list icon-white"></i>
+                Retour à la liste
+            </a>
+        </div>
+        

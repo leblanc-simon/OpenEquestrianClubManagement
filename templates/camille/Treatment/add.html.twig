@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Ajouter un type de soin{% endblock %}
+
+{% block content %}
+    <h1>Nouveau type de soin</h1>
+    <form action="{{ url('add-treatment-submit') }}" method="post">
+        {% include "Treatment/_form.html.twig" %}
+    </form>
+{% endblock %}

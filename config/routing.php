@@ -49,6 +49,16 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'treatments',
         ),
+        '/ajouter-un-type-de-soin' => array(
+            'class'     => 'Treatment',
+            'method'    => 'addAction',
+            'route'     => 'add-treatment',
+        ),
+        '/modifier-un-type-de-soin/{slug}' => array(
+            'class'     => 'Treatment',
+            'method'    => 'editAction',
+            'route'     => 'edit-treatment',
+        ),
     ),
     
     'POST' => array(
@@ -74,6 +84,18 @@ $routing = array(
             'class'     => 'Horse',
             'method'    => 'editAction',
             'route'     => 'edit-horse-submit',
+        ),
+        
+        // Gestion des types de soins
+        '/ajouter-un-type-de-soin' => array(
+            'class'     => 'Treatment',
+            'method'    => 'addAction',
+            'route'     => 'add-treatment-submit',
+        ),
+        '/modifier-un-type-de-soin/{slug}' => array(
+            'class'     => 'Treatment',
+            'method'    => 'editAction',
+            'route'     => 'edit-treatment-submit',
         ),
     ),
 );
