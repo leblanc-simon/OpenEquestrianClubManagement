@@ -55,12 +55,7 @@ class Horse extends App
                 $data = $form->getData();
                 
                 $horse = new HorseObject();
-                $horse->setName($data['name']);
-                $horse->setSireNumber($data['sire_number']);
-                $horse->setBirthday($data['birthday']);
-                $horse->setDescription($data['description']);
-                
-                $horse->save();
+                $this->saveObject($horse, $data);
                 
                 return $this->app->redirect($this->app['url_generator']->generate('horses'));
             }
@@ -96,12 +91,7 @@ class Horse extends App
             if ($form->isValid()) {
                 $data = $form->getData();
                 
-                $horse->setName($data['name']);
-                $horse->setSireNumber($data['sire_number']);
-                $horse->setBirthday($data['birthday']);
-                $horse->setDescription($data['description']);
-                
-                $horse->save();
+                $this->saveObject($horse, $data);
                 
                 return $this->app->redirect($this->app['url_generator']->generate('horses'));
             }
@@ -157,5 +147,23 @@ class Horse extends App
                 ->getForm();
         
         return $form;
+    }
+    
+    
+    /**
+     * Save the object with the datas of the form
+     *
+     * @param   \OpenEquestrianClubManagement\Model\Horse   $horse   the Horse object to save
+     * @param   array                                       $data    the form's datas
+     * @access  private
+     */
+    private function saveObject(HorseObject $horse, $data)
+    {
+        $horse->setName($data['name']);
+        $horse->setSireNumber($data['sire_number']);
+        $horse->setBirthday($data['birthday']);
+        $horse->setDescription($data['description']);
+        
+        $horse->save();
     }
 }
