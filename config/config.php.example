@@ -1,0 +1,19 @@
+<?php
+
+\OpenEquestrianClubManagement\Core\Config::add(array(
+    'debug' => false,
+    
+    'root_dir' => dirname(__DIR__),
+    'config_dir' => dirname(__DIR__).DIRECTORY_SEPARATOR.'config',
+    'theme_dir' => dirname(__DIR__).DIRECTORY_SEPARATOR.'templates',
+    'data_dir' => dirname(__DIR__).DIRECTORY_SEPARATOR.'data',
+    'cache_dir' => dirname(__DIR__).DIRECTORY_SEPARATOR.'cache', // false to disable cache
+    
+    'theme' => 'camille',
+    
+    'form_secret' => '7dcf9954b0320e1380b7815defe8dec9',
+    
+    'locale' => 'fr_FR',
+    
+    'nb_last_order' => 10,
+));
