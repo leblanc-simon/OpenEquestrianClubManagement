@@ -11,6 +11,7 @@
 namespace OpenEquestrianClubManagement\Extension\Twig;
 
 use OpenEquestrianClubManagement\Core\Config as CoreConfig;
+use OpenEquestrianClubManagement\Model\OrderPeer;
 
 
 /**
@@ -34,6 +35,7 @@ class Format extends \Twig_Extension
         return array(
             'price' => new \Twig_Filter_Method($this, 'priceFilter'),
             'date'  => new \Twig_Filter_Method($this, 'dateFilter'),
+            'state'  => new \Twig_Filter_Method($this, 'stateFilter'),
         );
     }
     
@@ -75,5 +77,34 @@ class Format extends \Twig_Extension
     {
         setlocale(LC_TIME, CoreConfig::get('locale'));
         return strftime('%A %d %B %Y', $v->format('U'));
+    }
+    
+    
+    /**
+     * Formate the order's state
+     *
+     * @param   int     $v  the state of order
+     * @return  string      the state formating (human readable)
+     * @access  public
+     */
+    public function stateFilter($v)
+    {
+        switch ($v) {
+            case OrderPeer::STATE_PAID:
+                return 'Payée';
+                //break
+                
+            case OrderPeer::STATE_CANCEL:
+                return 'Annulée';
+                //break
+                
+            case OrderPeer::STATE_PROGRESS:
+                return 'En attente de paiement';
+                //break
+            
+            default:
+                return 'Inconnu';
+                //break
+        }
     }
 }

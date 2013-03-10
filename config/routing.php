@@ -93,6 +93,23 @@ $routing = array(
             'method'    => 'editAction',
             'route'     => 'edit-treatment-apply',
         ),
+        
+        // Gestion des commandes
+        '/commandes' => array(
+            'class'     => 'Order',
+            'method'    => 'defaultAction',
+            'route'     => 'orders',
+        ),
+        '/commande/ajouter' => array(
+            'class'     => 'Order',
+            'method'    => 'addAction',
+            'route'     => 'add-order',
+        ),
+        '/commande/modifier/{id}' => array(
+            'class'     => 'Order',
+            'method'    => 'editAction',
+            'route'     => 'edit-order',
+        ),
     ),
     
     'POST' => array(
@@ -154,6 +171,18 @@ $routing = array(
             'class'     => 'TreatmentApply',
             'method'    => 'editAction',
             'route'     => 'edit-treatment-apply-submit',
+        ),
+        
+        // Gestion des commandes
+        '/commande/ajouter' => array(
+            'class'     => 'Order',
+            'method'    => 'addAction',
+            'route'     => 'add-order-submit',
+        ),
+        '/commande/modifier/{id}' => array(
+            'class'     => 'Order',
+            'method'    => 'editAction',
+            'route'     => 'edit-order-submit',
         ),
     ),
 );
