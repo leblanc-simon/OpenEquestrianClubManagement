@@ -1,9 +1,9 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}OpenEquestrianClubManagement - Modifier un type de carte de scéances{% endblock %}
+{% block title %}OpenEquestrianClubManagement - Modifier un type de carte de séances{% endblock %}
 
 {% block content %}
-    <h1>Modification du type de carte de scéances &quot;{{ card.name }}&quot;</h1>
+    <h1>Modification du type de carte de séances &quot;{{ card.name }}&quot;</h1>
     <form action="{{ url('edit-card-submit', { 'slug': card.slug }) }}" method="post">
         {% include "Card/_form.html.twig" %}
     </form>

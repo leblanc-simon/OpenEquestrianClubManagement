@@ -1,9 +1,9 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}OpenEquestrianClubManagement - Ajouter un type de carte de scéances{% endblock %}
+{% block title %}OpenEquestrianClubManagement - Ajouter un type de carte de séances{% endblock %}
 
 {% block content %}
-    <h1>Nouveau type de carte de scéances</h1>
+    <h1>Nouveau type de carte de séances</h1>
     <form action="{{ url('add-card-submit') }}" method="post">
         {% include "Card/_form.html.twig" %}
     </form>
