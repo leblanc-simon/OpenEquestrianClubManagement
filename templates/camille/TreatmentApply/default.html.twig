@@ -1,0 +1,77 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Sanitaire{% endblock %}
+
+{% block content %}
+    <h1>Sanitaire</h1>
+    
+    <div class="add">
+        <a href="{{ url('add-treatment-apply') }}" class="btn btn-primary">
+            <i class="icon-plus icon-white"></i>
+            Ajouter un soin
+        </a>
+    </div>
+    
+    <h2>Liste des soins à faire</h2>
+    
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Cheval</th>
+                <th>Soin</th>
+                <th>Date du dernier soin</th>
+                <th>Date du prochain soin</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horse in horses %}
+                {% if horse.hasTreatmentToApplys(7) %}
+                    {% for treatment in horse.getTreatmentToApplys(7) %}
+                    {% set treatment_apply = horse.getLastTreatmentApply(treatment) %}
+            <tr class="{% if horse.getNextTreatmentApplyDate(treatment) < current_date %}error{% elseif horse.getNextTreatmentApplyDate(treatment) == current_date %}alert{% endif %}">
+                <td>{{ horse.name }}</td>
+                <td>{{ treatment.name }}</td>
+                <td>{% if treatment_apply %}{{ treatment_apply.applyDate(null)|date }}{% else %}Jamais{% endif %}</td>
+                <td>{{ horse.getNextTreatmentApplyDate(treatment)|date }}</td>
+                <td>
+                    <a href="{{ url('add-treatment-apply') }}?horse={{ horse.slug }}&treatment={{ treatment.slug }}" class="btn btn-primary">
+                        <i class="icon-plus icon-white"></i>
+                        Ajouter ce soin
+                    </a>
+                </td>
+            </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Liste des soins effectués</h2>
+    
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Cheval</th>
+                <th>Soin</th>
+                <th>Date de soin</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for treatment_apply in treatment_applys %}
+            <tr>
+                <td>{{ treatment_apply.horse }}</td>
+                <td>{{ treatment_apply.treatment }}</td>
+                <td>{{ treatment_apply.applyDate(null)|date }}</td>
+                <td>
+                    <a href="{{ url('edit-treatment-apply', { 'id': treatment_apply.id }) }}" class="btn btn-warning">
+                        <i class="icon-pencil icon-white"></i>
+                        Modifier ce soin
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

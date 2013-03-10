@@ -15,12 +15,12 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'customers',
         ),
-        '/ajouter-un-client' => array(
+        '/client/ajouter' => array(
             'class'     => 'Customer',
             'method'    => 'addAction',
             'route'     => 'add-customer',
         ),
-        '/modifier-un-client/{slug}' => array(
+        '/client/modifier/{slug}' => array(
             'class'     => 'Customer',
             'method'    => 'editAction',
             'route'     => 'edit-customer',
@@ -32,12 +32,12 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'horses',
         ),
-        '/ajouter-un-cheval' => array(
+        '/cheval/ajouter' => array(
             'class'     => 'Horse',
             'method'    => 'addAction',
             'route'     => 'add-horse',
         ),
-        '/modifier-un-cheval/{slug}' => array(
+        '/cheval/modifier/{slug}' => array(
             'class'     => 'Horse',
             'method'    => 'editAction',
             'route'     => 'edit-horse',
@@ -49,12 +49,12 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'treatments',
         ),
-        '/ajouter-un-type-de-soin' => array(
+        '/type-de-soin/ajouter' => array(
             'class'     => 'Treatment',
             'method'    => 'addAction',
             'route'     => 'add-treatment',
         ),
-        '/modifier-un-type-de-soin/{slug}' => array(
+        '/type-de-soin/modifier/{slug}' => array(
             'class'     => 'Treatment',
             'method'    => 'editAction',
             'route'     => 'edit-treatment',
@@ -66,65 +66,94 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'cards',
         ),
-        '/ajouter-un-type-de-carte' => array(
+        '/type-de-carte/ajouter' => array(
             'class'     => 'Card',
             'method'    => 'addAction',
             'route'     => 'add-card',
         ),
-        '/modifier-un-type-de-carte/{slug}' => array(
+        '/type-de-carte/modifier/{slug}' => array(
             'class'     => 'Card',
             'method'    => 'editAction',
             'route'     => 'edit-card',
+        ),
+        
+        // Gestion des traitements
+        '/sanitaire' => array(
+            'class'     => 'TreatmentApply',
+            'method'    => 'defaultAction',
+            'route'     => 'treatment-apply',
+        ),
+        '/sanitaire/ajouter-un-soin' => array(
+            'class'     => 'TreatmentApply',
+            'method'    => 'addAction',
+            'route'     => 'add-treatment-apply',
+        ),
+        '/sanitaire/modifier-un-soin/{id}' => array(
+            'class'     => 'TreatmentApply',
+            'method'    => 'editAction',
+            'route'     => 'edit-treatment-apply',
         ),
     ),
     
     'POST' => array(
         // Gestion des clients
-        '/ajouter-un-client' => array(
+        '/client/ajouter' => array(
             'class'     => 'Customer',
             'method'    => 'addAction',
             'route'     => 'add-customer-submit',
         ),
-        '/modifier-un-client' => array(
+        '/client/modifier' => array(
             'class'     => 'Customer',
             'method'    => 'editAction',
             'route'     => 'edit-customer-submit',
         ),
         
         // Gestion des chevaux
-        '/ajouter-un-cheval' => array(
+        '/cheval/ajouter' => array(
             'class'     => 'Horse',
             'method'    => 'addAction',
             'route'     => 'add-horse-submit',
         ),
-        '/modifier-un-cheval/{slug}' => array(
+        '/cheval/modifier/{slug}' => array(
             'class'     => 'Horse',
             'method'    => 'editAction',
             'route'     => 'edit-horse-submit',
         ),
         
         // Gestion des types de soins
-        '/ajouter-un-type-de-soin' => array(
+        '/type-de-soin/ajouter' => array(
             'class'     => 'Treatment',
             'method'    => 'addAction',
             'route'     => 'add-treatment-submit',
         ),
-        '/modifier-un-type-de-soin/{slug}' => array(
+        '/type-de-soin/modifier/{slug}' => array(
             'class'     => 'Treatment',
             'method'    => 'editAction',
             'route'     => 'edit-treatment-submit',
         ),
         
         // Gestion des types de cartes de séances
-        '/ajouter-un-type-de-carte' => array(
+        '/type-de-carte/ajouter' => array(
             'class'     => 'Card',
             'method'    => 'addAction',
             'route'     => 'add-card-submit',
         ),
-        '/modifier-un-type-de-carte/{slug}' => array(
+        '/type-de-carte/modifier/{slug}' => array(
             'class'     => 'Card',
             'method'    => 'editAction',
             'route'     => 'edit-card-submit',
+        ),
+        
+        // Gestion des traitements
+        '/sanitaire/ajouter-un-soin' => array(
+            'class'     => 'TreatmentApply',
+            'method'    => 'addAction',
+            'route'     => 'add-treatment-apply-submit',
+        ),
+        '/sanitaire/modifier-un-soin/{id}' => array(
+            'class'     => 'TreatmentApply',
+            'method'    => 'editAction',
+            'route'     => 'edit-treatment-apply-submit',
         ),
     ),
 );

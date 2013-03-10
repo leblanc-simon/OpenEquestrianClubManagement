@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Modifier soin{% endblock %}
+
+{% block content %}
+    <h1>Modification du soin</h1>
+    <form action="{{ url('edit-treatment-apply-submit', { 'id': treatment_apply.id }) }}" method="post">
+        {% include "TreatmentApply/_form.html.twig" %}
+    </form>
+{% endblock %}

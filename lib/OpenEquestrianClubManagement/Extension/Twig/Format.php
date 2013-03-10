@@ -33,6 +33,7 @@ class Format extends \Twig_Extension
     {
         return array(
             'price' => new \Twig_Filter_Method($this, 'priceFilter'),
+            'date'  => new \Twig_Filter_Method($this, 'dateFilter'),
         );
     }
     
@@ -50,15 +51,29 @@ class Format extends \Twig_Extension
     
     
     /**
-     * Get the value of configuration
+     * Formate the price
      *
-     * @param   string  $v  the name of the configuration to retrieve
-     * @return  string      the value of the configuration
+     * @param   float   $v  the price to formate
+     * @return  string      the price formating
      * @access  public
      */
     public function priceFilter($v)
     {
         $fmt = new \NumberFormatter(CoreConfig::get('locale'), \NumberFormatter::CURRENCY);
         return $fmt->formatCurrency($v, 'EUR');
+    }
+    
+    
+    /**
+     * Formate the date
+     *
+     * @param   \DateTime  $v   the date to formate
+     * @return  string          the date formating
+     * @access  public
+     */
+    public function dateFilter($v)
+    {
+        setlocale(LC_TIME, CoreConfig::get('locale'));
+        return strftime('%A %d %B %Y', $v->format('U'));
     }
 }

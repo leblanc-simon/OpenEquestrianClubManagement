@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Ajouter un soin{% endblock %}
+
+{% block content %}
+    <h1>Nouveau soin</h1>
+    <form action="{{ url('add-treatment-apply-submit') }}" method="post">
+        {% include "TreatmentApply/_form.html.twig" %}
+    </form>
+{% endblock %}

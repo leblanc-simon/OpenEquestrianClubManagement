@@ -246,8 +246,10 @@ class OpenEquestrianClubManagement
     static private function registerTranslation()
     {
         self::getApp()->register(new \Silex\Provider\TranslationServiceProvider(), array(
-            'locale_fallback' => 'fr',
+            'locale_fallback' => Core\Config::get('locale'),
         ));
+        
+        setlocale(LC_ALL, Core\Config::get('locale'));
     }
     
     
