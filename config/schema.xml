@@ -100,7 +100,9 @@
     
     <table name="order" description="Table de gestion des commandes">
         <column name="customer_id" type="INTEGER" required="true" description="Client passant la commande"/>
+        <column name="num_order" type="VARCHAR" size="255" required="true" description="Numéro de la commande"/>
         <column name="total" type="DOUBLE" required="true" description="Montant total de la commande (TTC)"/>
+        <column name="vat" type="DOUBLE" required="true" description="Taux de TVA au moment de la commande"/>
         <column name="date" type="DATE" required="true" description="Date de la commande"/>
         <column name="payment_method" type="ENUM" valueSet="credit_card,check,money" required="true" description="Type de moyen de paiement"/>
         <column name="state" type="ENUM" valueSet="paid,cancel,progress" required="true" description="Etat du paiement de la commande"/>
@@ -111,6 +113,9 @@
         <foreign-key foreignTable="customer" name="Rel_customer_order" onDelete="cascade">
             <reference local="customer_id" foreign="id"/>
         </foreign-key>
+        <unique name="index_order_num_order">
+            <unique-column name="num_order"/>
+        </unique>
     </table>
     
     <table name="order_detail" description="Table de gestion des détails de commandes">
