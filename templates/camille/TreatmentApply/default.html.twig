@@ -14,7 +14,7 @@
     
     <h2>Liste des soins à faire</h2>
     
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered listing-treatment-apply">
         <thead>
             <tr>
                 <th>Cheval</th>
@@ -49,7 +49,7 @@
     
     <h2>Liste des soins effectués</h2>
     
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered listing">
         <thead>
             <tr>
                 <th>Cheval</th>
@@ -67,7 +67,7 @@
                 <td>
                     <a href="{{ url('edit-treatment-apply', { 'id': treatment_apply.id }) }}" class="btn btn-warning">
                         <i class="icon-pencil icon-white"></i>
-                        Modifier ce soin
+                        Modifier
                     </a>
                 </td>
             </tr>

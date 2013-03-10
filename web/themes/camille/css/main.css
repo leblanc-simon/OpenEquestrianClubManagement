@@ -1,3 +1,8 @@
+/****************************************
+ *
+ *  Style par défaut
+ *
+ ****************************************/
 body {
     padding: 40px 0;
 }
@@ -6,6 +11,14 @@ footer {
     font-size: 0.8em;
     text-align: center;
     margin-top: 2em;
+}
+
+h1 {
+    font-size: 28.5px;
+}
+
+h2 {
+    font-size: 22.5px;
 }
 
 .clear {
@@ -33,4 +46,85 @@ footer {
     padding: 3px 7px;
     position: absolute;
     top: -1px;
+}
+
+/****************************************
+ *
+ *  Formulaire
+ *
+ ****************************************/
+.control-group input[type="text"],
+.control-group input[type="date"],
+.control-group input[type="email"] {
+    width: 350px;
+}
+
+.control-group select {
+    width: 365px;
+}
+
+.span12.control-group textarea {
+    width:90%;
+}
+
+.block-description .span12.control-group textarea {
+    height: 150px;
+}
+
+
+/****************************************
+ *
+ *  Texte des blocs
+ *
+ ****************************************/
+.block-description:after {
+    content: "Informations complémentaires"
+}
+
+.block-identity:after {
+    content: "Identité"
+}
+
+.block-contact:after {
+    content: "Contact"
+}
+
+.block-horse:after {
+    content: "Identité du cheval"
+}
+
+.block-treatment:after {
+    content: "Informations du type de soin"
+}
+
+.block-card:after {
+    content: "Informations du type de carte de séance"
+}
+
+.block-treatment-apply:after {
+    content: "Information du soin";
+}
+
+
+/****************************************
+ *
+ *  Mise en page
+ *
+ ****************************************/
+.block-description {
+    margin-bottom: 20px;
+}
+
+.add {
+    margin-bottom: 20px;
+}
+
+table.listing th:last-child,
+table.listing td:last-child {
+    width:95px;
+}
+
+table.listing-treatment-apply th:last-child,
+table.listing-treatment-apply td:last-child {
+    width:138px;
 }
