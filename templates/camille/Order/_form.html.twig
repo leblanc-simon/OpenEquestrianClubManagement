@@ -1,0 +1,106 @@
+
+        <div class="block-detail block-order">
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.date) }}
+                    {{ form_label(form.date) }}
+                    {{ form_widget(form.date) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.num_order) }}
+                    {{ form_label(form.num_order) }}
+                    {{ form_widget(form.num_order) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.customer_id) }}
+                    {{ form_label(form.customer_id) }}
+                    {{ form_widget(form.customer_id) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group">
+                    {{ form_errors(form.payment_method) }}
+                    {{ form_label(form.payment_method) }}
+                    {{ form_widget(form.payment_method) }}
+                </div>
+                <div class="span5 control-group">
+                    {{ form_errors(form.state) }}
+                    {{ form_label(form.state) }}
+                    {{ form_widget(form.state) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 control-group input-append">
+                    {{ form_errors(form.total) }}
+                    {{ form_label(form.total) }}
+                    {{ form_widget(form.total) }}
+                    <span class="add-on">€ TTC</span>
+                </div>
+                <div class="span5 control-group input-append">
+                    {{ form_errors(form.vat) }}
+                    {{ form_label(form.vat) }}
+                    {{ form_widget(form.vat) }}
+                    <span class="add-on">%</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="block-detail block-order-details">
+            <div id="list-order-detail">
+            {% if order_details|length > 0 %}
+                {% set i = 0 %}
+                {% for order_detail in order_details %}
+                {% include "Order/_order_detail.html.twig" %}
+                {% set i = i + 1 %}
+                {% endfor %}
+            {% else %}
+                {% set i = 0 %}
+                <div class="row">
+                    <div class="span6 control-group">
+                        <label for="form_order_detail_card_id_{{ i }}">Carte de séance</label>
+                        <select name="form_order_detail[card_id][]" id="form_order_detail_card_id_{{ i }}">
+                            {% for card in cards %}
+                            <option value="{{ card.id }}" data-price="{{ card.price }}">{{ card.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="span3 control-group">
+                        <label for="form_order_detail_quantity_{{ i }}">Quantité</label>
+                        <input type="number" name="form_order_detail[quantity][]" id="form_order_detail_quantity_{{ i }}" value="1" />
+                    </div>
+                    <div class="span2">
+                        <button class="btn btn-danger remove-order-detail" type="button">
+                            <i class="icon-trash icon-white"></i>
+                            Supprimer
+                        </button>
+                    </div>
+                </div>
+                {% set i = i + 1 %}
+            {% endif %}
+            </div>
+            <div class="add-order-detail">
+                <button class="btn btn-primary">
+                    <i class="icon-plus icon-white"></i>
+                    Ajouter une ligne de commande
+                </button>
+            </div>
+        </div>
+        
+        <script type="application/x-javascript">
+            var num_order_detail = {{ i }};
+        </script>
+        
+        {{ form_rest(form) }}
+        
+        <div class="submit-form">
+            <button type="submit" class="btn btn-success">
+                <i class="icon-ok icon-white"></i>
+                Enregistrer
+            </button>
+            <a href="{{ url('orders') }}" class="btn btn-warning">
+                <i class="icon-th-list icon-white"></i>
+                Retour à la liste
+            </a>
+        </div>

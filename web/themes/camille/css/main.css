@@ -71,6 +71,22 @@ h2 {
     height: 150px;
 }
 
+#form_payment_method label,
+#form_state label {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+#form_payment_method input[type="radio"],
+#form_state input[type="radio"] {
+    margin-top: 0px;
+}
+
+.remove-order-detail {
+    margin-top: 25px;
+}
+
 
 /****************************************
  *

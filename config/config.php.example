@@ -16,4 +16,7 @@
     'locale' => 'fr_FR',
     
     'nb_last_order' => 10,
+    
+    'vat' => 19.6,
+    'num_order_template' => 'FA%year%/%increment%',
 ));

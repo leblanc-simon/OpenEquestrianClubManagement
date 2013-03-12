@@ -1,0 +1,23 @@
+
+        <div id="order-detail" class="hide">
+            <div class="row">
+                <div class="span6 control-group">
+                    <label for="form_order_detail_card_id_%i%">Carte de séance</label>
+                    <select name="form_order_detail[card_id][]" id="form_order_detail_card_id_%i%">
+                        {% for card in cards %}
+                        <option value="{{ card.id }}" data-price="{{ card.price }}">{{ card.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="span3 control-group">
+                    <label for="form_order_detail_quantity_%i%">Quantité</label>
+                    <input type="number" name="form_order_detail[quantity][]" id="form_order_detail_quantity_%i%" value="1" />
+                </div>
+                <div class="span2">
+                    <button class="btn btn-danger remove-order-detail">
+                        <i class="icon-trash icon-white"></i>
+                        Supprimer
+                    </button>
+                </div>
+            </div>
+        </div>

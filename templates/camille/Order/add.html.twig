@@ -1,0 +1,11 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Ajouter une commande{% endblock %}
+
+{% block content %}
+    <h1>Nouvelle commande</h1>
+    <form action="{{ url('add-order-submit') }}" method="post">
+        {% include "Order/_form.html.twig" %}
+    </form>
+    {% include "Order/_order_detail_empty.html.twig" %}
+{% endblock %}

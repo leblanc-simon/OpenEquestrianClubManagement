@@ -33,9 +33,10 @@ class Format extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'price' => new \Twig_Filter_Method($this, 'priceFilter'),
-            'date'  => new \Twig_Filter_Method($this, 'dateFilter'),
-            'state'  => new \Twig_Filter_Method($this, 'stateFilter'),
+            'price'     => new \Twig_Filter_Method($this, 'priceFilter'),
+            'date'      => new \Twig_Filter_Method($this, 'dateFilter'),
+            'state'     => new \Twig_Filter_Method($this, 'stateFilter'),
+            'payment'   => new \Twig_Filter_Method($this, 'paymentFilter'),
         );
     }
     
@@ -100,6 +101,35 @@ class Format extends \Twig_Extension
                 
             case OrderPeer::STATE_PROGRESS:
                 return 'En attente de paiement';
+                //break
+            
+            default:
+                return 'Inconnu';
+                //break
+        }
+    }
+    
+    
+    /**
+     * Formate the payment method
+     *
+     * @param   int     $v  the payment method
+     * @return  string      the payment method (human readable)
+     * @access  public
+     */
+    public function paymentFilter($v)
+    {
+        switch ($v) {
+            case OrderPeer::PAYMENT_METHOD_CHECK:
+                return 'Chèque';
+                //break
+                
+            case OrderPeer::PAYMENT_METHOD_CREDIT_CARD:
+                return 'Carte bancaire';
+                //break
+                
+            case OrderPeer::PAYMENT_METHOD_MONEY:
+                return 'Liquide';
                 //break
             
             default:

@@ -120,6 +120,7 @@
     
     <table name="order_detail" description="Table de gestion des détails de commandes">
         <column name="order_id" type="INTEGER" required="true" description="Commande pour laquelle ce détail est valable"/>
+        <column name="card_id" type="INTEGER" required="false" description="Carte commandée"/>
         <column name="name" type="VARCHAR" required="true" size="255" description="Nom de l'item acheté"/>
         <column name="amount" type="DOUBLE" required="true" description="Montant unitaire (TTC) de l'item"/>
         <column name="vat" type="DOUBLE" required="true" description="Taux de TVA au moment de la commande"/>
@@ -130,6 +131,45 @@
         
         <foreign-key foreignTable="order" name="Rel_order_order_detail" onDelete="cascade">
             <reference local="order_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="card" name="Rel_card_order_detail" onDelete="setnull">
+            <reference local="card_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="allowed_lesson" description="Table de gestion des leçons autorisées">
+        <column name="customer_id" type="INTEGER" required="true" description="Client concerné par les leçons autorisés"/>
+        <column name="order_id" type="INTEGER" required="true" description="Commande ayant entraîner cette autorisation"/>
+        <column name="quantity" type="INTEGER" required="true" description="Nombre de leçons autorisées"/>
+        <column name="taken" type="INTEGER" required="true" description="Nombre de leçons prises"/>
+        <column name="remaining" type="INTEGER" required="true" description="Nombre de leçons restantes"/>
+        <column name="expiration_date" type="DATE" required="false" description="Date de péremption pour le nombre de leçons (null si pas de date de péremption)"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        
+        <foreign-key foreignTable="customer" name="Rel_customer_allowed_lesson" onDelete="cascade">
+            <reference local="customer_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="order" name="Rel_order_allowed_lesson" onDelete="cascade">
+            <reference local="order_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="lesson" description="Table de gestion des leçons">
+        <column name="customer_id" type="INTEGER" required="true" description="Client concerné par la leçon"/>
+        <column name="date" type="TIMESTAMP" required="true" description="Date de la leçon"/>
+        <column name="horse_id" type="INTEGER" required="false" description="Cheval pris pendant la leçon"/>
+        <column name="description" type="LONGVARCHAR" description="Description de la leçon"/>
+        
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        
+        <foreign-key foreignTable="customer" name="Rel_customer_lesson" onDelete="cascade">
+            <reference local="customer_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="horse" name="Rel_horse_lesson" onDelete="cascade">
+            <reference local="horse_id" foreign="id"/>
         </foreign-key>
     </table>
 </database>

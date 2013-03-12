@@ -1,0 +1,11 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}OpenEquestrianClubManagement - Modifier une commande{% endblock %}
+
+{% block content %}
+    <h1>Modification de la commande</h1>
+    <form action="{{ url('edit-order-submit', { 'id': order.id }) }}" method="post">
+        {% include "Order/_form.html.twig" %}
+    </form>
+    {% include "Order/_order_detail_empty.html.twig" %}
+{% endblock %}
