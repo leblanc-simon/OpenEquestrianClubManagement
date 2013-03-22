@@ -181,7 +181,7 @@ class Customer extends App
                     'label' => 'Nom des parents',
                 ))
                 ->add('address', 'textarea', array(
-                    'data' => $name,
+                    'data' => $address,
                     'required' => false,
                     'label' => 'Adresse',
                 ))
