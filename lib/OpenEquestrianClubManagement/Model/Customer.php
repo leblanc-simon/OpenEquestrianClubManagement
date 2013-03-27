@@ -90,7 +90,7 @@ class Customer extends BaseCustomer
     {
         $phone0 = $this->getPhone0();
         if ($phone0 !== $v) {
-            $phones = $this->getPhones();
+            $phones = clone $this->getPhones();
             if (is_object($phones) === false) {
                 $phones = new \stdClass();
             }
@@ -132,7 +132,7 @@ class Customer extends BaseCustomer
     {
         $phone1 = $this->getPhone1();
         if ($phone1 !== $v) {
-            $phones = $this->getPhones();
+            $phones = clone $this->getPhones();
             if (is_object($phones) === false) {
                 $phones = new \stdClass();
             }
@@ -174,7 +174,7 @@ class Customer extends BaseCustomer
     {
         $phone2 = $this->getPhone2();
         if ($phone2 !== $v) {
-            $phones = $this->getPhones();
+            $phones = clone $this->getPhones();
             if (is_object($phones) === false) {
                 $phones = new \stdClass();
             }
