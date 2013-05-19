@@ -129,6 +129,22 @@ class Order extends App
     
     
     /**
+     * Show all orders action
+     *
+     * @return  Response
+     * @access  public
+     */
+    public function showAllAction()
+    {
+        $orders = OrderQuery::create()
+                    ->orderByDate(\Criteria::DESC)
+                    ->find();
+        
+        return $this->render('showAll.html.twig', array('orders' => $orders));
+    }
+    
+    
+    /**
      * Get the add/edit form for the treatment apply
      *
      * @param   \OpenEquestrianClubManagement\Model\Order   $order    the order to load in the form (null else)

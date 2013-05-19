@@ -100,6 +100,11 @@ $routing = array(
             'method'    => 'defaultAction',
             'route'     => 'orders',
         ),
+        '/commande/listing' => array(
+            'class'     => 'Order',
+            'method'    => 'showAllAction',
+            'route'     => 'all-orders',
+        ),
         '/commande/ajouter' => array(
             'class'     => 'Order',
             'method'    => 'addAction',
