@@ -175,9 +175,9 @@ class Order extends App
             'title' => 'Facture '.$order->getNumOrder(),
         ));
         
-        /*if ($pdf->callApi() === true) {
+        if ($pdf->callApi() === true) {
             $pdf->download('facture-'.$order->getNumOrder().'.pdf');
-        }*/
+        }
         
         return $render;
     }
