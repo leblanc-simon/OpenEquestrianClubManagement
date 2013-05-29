@@ -28,7 +28,7 @@ h2 {
 }
 .footer {
     border-top: 1px solid #ddd;
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     left: 0;
     width: 100%;

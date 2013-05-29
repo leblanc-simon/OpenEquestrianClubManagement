@@ -173,12 +173,11 @@ class Order extends App
         $pdf->setContent($render);
         $pdf->setOptions(array(
             'title' => 'Facture '.$order->getNumOrder(),
-            'footer-html' => '<div style="text-align:center;font-size:10.5px;border-top:1px solid #ddd">'.Config::get('company_name').' - SIRET : '.Config::get('company_siret').' - TVA. non applicable, art. 293 B du CGI.</div>',
         ));
         
-        if ($pdf->callApi() === true) {
+        /*if ($pdf->callApi() === true) {
             $pdf->download('facture-'.$order->getNumOrder().'.pdf');
-        }
+        }*/
         
         return $render;
     }
