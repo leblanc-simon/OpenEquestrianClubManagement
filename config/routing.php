@@ -115,6 +115,11 @@ $routing = array(
             'method'    => 'editAction',
             'route'     => 'edit-order',
         ),
+        '/commande/imprimer/{id}' => array(
+            'class'     => 'Order',
+            'method'    => 'printAction',
+            'route'     => 'print-order',
+        ),
     ),
     
     'POST' => array(

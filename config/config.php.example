@@ -19,4 +19,14 @@
     
     'vat' => 19.6,
     'num_order_template' => 'FA%year%/%increment%',
+    
+    'company_siret' => '',
+    'company_name' => '',
+    'company_address' => '',
+    'company_postal_code' => '',
+    'company_city' => '',
+    
+    'print_service' => '',
+    'print_email' => '',
+    'print_api_key' => '',
 ));

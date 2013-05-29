@@ -144,3 +144,8 @@ table.listing-treatment-apply th:last-child,
 table.listing-treatment-apply td:last-child {
     width:138px;
 }
+
+table.listing-orders th:last-child,
+table.listing-orders td:last-child {
+    width: 200px;
+}

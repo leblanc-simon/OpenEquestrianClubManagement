@@ -1,0 +1,77 @@
+{% extends "layout-print.html.twig" %}
+
+{% block title %}Facture n° {{ order.numOrder }}{% endblock %}
+
+{% block content %}
+            <div class="row margin-header">
+                <div class="span5">
+                    <div class="row">
+                        {{ get_config('company_name') }}<br />
+                        {{ get_config('company_address') }}<br />
+                        {{ get_config('company_postal_code') }} {{ get_config('company_city') }}<br />
+                        Tél : {{ get_config('company_phone') }}<br />
+                        E-mail : {{ get_config('company_email') }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span5 offset7">
+                    <div class="row">
+                        {{ order.getCustomer() }}<br />
+                        {{ order.customer.address }}<br />
+                        {{ order.customer.postalCode }} {{ order.customer.city }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <h1>Facture n° {{ order.numOrder }}</h1>
+                <h2>Date de la facture : {{ order.date(null)|date }}</h2>
+            </div>
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Description</th>
+                            <th>Prix unitaire</th>
+                            <th>Quantité</th>
+                            <th class="right">Prix</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set i = 0 %}
+                        {% for order_detail in order_details %}
+                            {% set i = i + 1 %}
+                        <tr>
+                            <td>{{ i }}</td>
+                            <td>{{ order_detail.name }}</td>
+                            <td>{{ order_detail.amount|number_format(2, ',', ' ') }} €</td>
+                            <td>{{ order_detail.quantity }}</td>
+                            <td class="right">{{ (order_detail.amount * order_detail.quantity)|number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="bold" colspan="4"><span class="pull-right">Total net</span></td>
+                            <td class="right">{{ order.total|number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                        <tr>
+                            <td class="bold" colspan="4"><span class="pull-right">Taxes</span></td>
+                            <td class="right">0,00 €</td>
+                        </tr>
+                        <tr class="bold">
+                            <td colspan="4"><span class="pull-right">Total</span></td>
+                            <td class="right">{{ order.total|number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        
+            <div class="row">
+                <div class="footer">
+                    {{ get_config('company_name') }} - SIRET : {{ get_config('company_siret') }} - TVA. non applicable, art. 293 B du CGI.
+                </div>
+            </div>
+{% endblock %}

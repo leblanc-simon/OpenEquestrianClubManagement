@@ -37,8 +37,28 @@
         
         "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev",
         
-        "propel/propel1": "1.6.*"
+        "propel/propel1": "1.6.*",
+        
+        "portailpro/freeapiprint": "1.0.0"
     },
+    
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "portailpro/freeapiprint",
+                "version": "1.0.0",
+                "source": {
+                    "url": "git://github.com/PortailPro/FreeApiPrint.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "classmap": ["public/ApiPrintPdf.class.php"]
+                }
+            }
+        }
+    ],
     
     "minimum-stability": "dev"
 }

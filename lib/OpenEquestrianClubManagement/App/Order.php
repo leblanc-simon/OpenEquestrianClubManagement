@@ -145,6 +145,42 @@ class Order extends App
     
     
     /**
+     * Print order
+     *
+     * @return  Response
+     * @access  Public
+     */
+    public function printAction()
+    {
+        $id = $this->app['request']->get('id');
+        if (empty($id) === true) {
+            throw new Exception\Error404('La commande n\'existe pas');
+        }
+        
+        $order = OrderQuery::create()->findOneById($id);
+        if ($order === null) {
+            throw new Exception\Error404('La commande n\'existe pas');
+        }
+        
+        $order_details = $order->getOrderDetails();
+        
+        $render = $this->render('print.html.twig', array('order' => $order, 'order_details' => $order_details, 'request' => $this->app['request']));
+        
+        $pdf = new \ApiPrintPdf();
+        $pdf->setService(Config::get('print_service'));
+        $pdf->setEmail(Config::get('print_email'));
+        $pdf->setApiKey(Config::get('print_api_key'));
+        $pdf->setContent($render);
+        
+        if ($pdf->callApi() === true) {
+            $pdf->download('facture-'.$order->getNumOrder().'.pdf');
+        }
+        
+        return $render;
+    }
+    
+    
+    /**
      * Get the add/edit form for the treatment apply
      *
      * @param   \OpenEquestrianClubManagement\Model\Order   $order    the order to load in the form (null else)
