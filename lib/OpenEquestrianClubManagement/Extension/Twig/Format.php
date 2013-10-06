@@ -77,7 +77,13 @@ class Format extends \Twig_Extension
     public function dateFilter($v)
     {
         setlocale(LC_TIME, CoreConfig::get('locale'));
-        return utf8_encode(strftime('%A %d %B %Y', $v->format('U')));
+        $date = strftime('%A %d %B %Y', $v->format('U'));
+
+        if (strpos(CoreConfig::get('locale'), 'UTF-8') === false) {
+            $date = utf8_encode($date);
+        }
+
+        return $date;
     }
     
     
